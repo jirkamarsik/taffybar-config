@@ -14,10 +14,12 @@ import Data.Maybe (fromMaybe)
 import System.Environment (getArgs)
 import Text.Read (readMaybe)
 
+memCallback :: IO [Double]
 memCallback = do
   mi <- parseMeminfo
   return [memoryUsedRatio mi]
 
+cpuCallback :: IO [Double]
 cpuCallback = do
   (userLoad, systemLoad, totalLoad) <- cpuLoad
   return [totalLoad, systemLoad]
@@ -26,6 +28,7 @@ fgcolor :: String -> String -> String
 fgcolor color contents =
   "<span fgcolor='" ++ color ++ "'>" ++ contents ++ "</span>"
 
+main :: IO ()
 main = do
   args <- getArgs
   let memCfg = defaultGraphConfig { graphDataColors = [(1, 0, 0, 1)]
