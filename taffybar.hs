@@ -42,9 +42,10 @@ main = do
       mem = pollingGraphNew memCfg 1 memCallback
       cpu = pollingGraphNew cpuCfg 0.5 cpuCallback
       tray = systrayNew
-      chosenMonitorNumber = fromMaybe 0 $ readMaybe $ head args
+      chosenMonitor = fromMaybe 0 $ readMaybe $ head args
       myTaffybarConfig = defaultTaffybarConfig { startWidgets = [ pager ]
-                                               , endWidgets = [ tray, clock, mem, cpu, mpris ]
-                                               , monitorNumber = chosenMonitorNumber
+                                               , endWidgets = (if chosenMonitor == 0 then [ tray ] else [])
+                                                              ++ [ clock, mem, cpu, mpris ]
+                                               , monitorNumber = chosenMonitor
                                                }
   defaultTaffybar myTaffybarConfig
