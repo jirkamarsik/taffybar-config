@@ -33,7 +33,7 @@ volCallback = do
   let mute = if muteNum == 0 then False else True
   volumeFile <- readFile "/home/jirka/.volume"
   let volumeAbs = fromMaybe 0 $ readMaybe volumeFile
-  return $ if mute then 0 else volumeAbs / 90000
+  return $ if mute then 0 else volumeAbs / 65535
 
 fgcolor :: String -> String -> String
 fgcolor color contents =
