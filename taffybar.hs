@@ -1,6 +1,7 @@
 import System.Taffybar
 
 import System.Taffybar.Systray
+import System.Taffybar.Pager
 import System.Taffybar.TaffyPager
 import System.Taffybar.SimpleClock
 import System.Taffybar.MPRIS2
@@ -52,7 +53,8 @@ main = do
                                   , graphLabel = Just "cpu"
                                   }
   let clock = textClockNew Nothing (fgcolor "orange" "%a %b %_d %H:%M") 1
-      pager = taffyPagerNew $ defaultPagerConfig { emptyWorkspace = fgcolor "gray" }
+      pager = taffyPagerNew $ defaultPagerConfig { emptyWorkspace = fgcolor "gray"
+                                                 , activeWindow = escape . shorten 256 }
       mpris = mpris2New
       mem = pollingGraphNew memCfg 1 memCallback
       cpu = pollingGraphNew cpuCfg 0.5 cpuCallback
