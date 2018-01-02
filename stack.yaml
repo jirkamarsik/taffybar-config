@@ -7,12 +7,11 @@ packages:
     commit: 11412752b483135e0c151ab90be17b217f837c4b
   extra-dep: true
 extra-deps:
-- rate-limit-1.1.1
-- time-units-1.0.0
-- dbus-0.10.13
+- gio-0.13.4.1
+- gtk-0.14.7
 - gtk-traymanager-0.1.6
-- xmonad-contrib-0.13
-- X11-xft-0.3.1
-- libxml-sax-0.7.5
+- rate-limit-1.1.1
+- time-1.6.0.1
+- time-units-1.0.0
 - xml-helpers-1.0.0
-resolver: lts-8.2
+resolver: lts-10.2
